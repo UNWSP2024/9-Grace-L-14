@@ -1,3 +1,8 @@
+'''Average Numbers Program
+By Grace LeVoir
+3 - 27 - 26'''
+
+
 # Program #3: Average Numbers
 # Assume a file containing a series of integers is named numbers.txt and exists on the computer's disk.
 # (please use the provided numbers.txt)
@@ -11,8 +16,25 @@
 def sum_numbers_from_file():
     ######################
     # Add your code here #
-    ######################
-    print('In the sum_numbers_from_file function')
+
+    try:
+        numbers = open('numbers.txt','r')
+        total = 0
+
+        for number in numbers:
+            total += int(number)
+        ######################
+        print(f'The sum is: {total}')
+
+    except IOError:
+        print('An IOError occurred. Please try again.')
+
+    except ValueError as err:
+        print(err)
+        print('Please try again.')
+
+    finally:
+        numbers.close()
 
 # You don't need to change anything below this line:
 if __name__ == '__main__':
